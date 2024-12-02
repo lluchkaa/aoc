@@ -7,7 +7,7 @@ import (
 	"github.com/lluchkaa/aoc/pkg/day1"
 )
 
-const filename = "day1.txt"
+const filename = "input/day1.txt"
 
 func main() {
 	file, err := os.Open(filename)
