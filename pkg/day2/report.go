@@ -23,7 +23,7 @@ func isAscSafe(x, y int) bool {
 }
 
 func isDescSafe(x, y int) bool {
-	return x > y && x-y <= 3
+	return isAscSafe(y, x)
 }
 
 func isSafeFunc(r report, comparator func(x, y int) bool) bool {

@@ -11,7 +11,6 @@ const filename = "input/day1.txt"
 
 func main() {
 	file, err := os.Open(filename)
-
 	defer file.Close()
 	if err != nil {
 		panic(err)
