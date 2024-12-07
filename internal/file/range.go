@@ -17,3 +17,17 @@ func Lines(r io.Reader) iter.Seq[string] {
 		}
 	}
 }
+
+func Lines2(r io.Reader) iter.Seq2[int, string] {
+	scanner := bufio.NewScanner(r)
+	i := 0
+
+	return func(yield func(int, string) bool) {
+		for scanner.Scan() {
+			if !yield(i, scanner.Text()) {
+				break
+			}
+			i++
+		}
+	}
+}
