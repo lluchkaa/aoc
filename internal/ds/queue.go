@@ -1,4 +1,4 @@
-package queue
+package ds
 
 type node[T any] struct {
 	value T
@@ -49,6 +49,6 @@ func (q *Queue[T]) Peek() (T, bool) {
 	return q.head.value, true
 }
 
-func New[T any]() *Queue[T] {
+func NewQueue[T any]() *Queue[T] {
 	return &Queue[T]{}
 }

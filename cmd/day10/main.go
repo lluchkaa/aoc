@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/lluchkaa/aoc/internal/queue"
+	"github.com/lluchkaa/aoc/internal/ds"
 	"github.com/lluchkaa/aoc/internal/reader"
 )
 
@@ -48,7 +48,7 @@ func walk(lines []string, complete func(position, position)) {
 				continue
 			}
 
-			q := queue.New[cell]()
+			q := ds.NewQueue[cell]()
 			q.Push(cell{lines[i][j], j, i})
 
 			for c, ok := q.Pop(); ok; c, ok = q.Pop() {
