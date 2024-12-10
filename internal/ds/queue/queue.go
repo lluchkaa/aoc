@@ -1,17 +1,17 @@
-package ds
+package queue
 
-type node[T any] struct {
+type queueNode[T any] struct {
 	value T
-	next  *node[T]
+	next  *queueNode[T]
 }
 
 type Queue[T any] struct {
-	head *node[T]
-	tail *node[T]
+	head *queueNode[T]
+	tail *queueNode[T]
 }
 
 func (q *Queue[T]) Push(v T) {
-	n := &node[T]{value: v}
+	n := &queueNode[T]{value: v}
 
 	if q.tail != nil {
 		q.tail.next = n
@@ -49,6 +49,6 @@ func (q *Queue[T]) Peek() (T, bool) {
 	return q.head.value, true
 }
 
-func NewQueue[T any]() *Queue[T] {
+func New[T any]() *Queue[T] {
 	return &Queue[T]{}
 }
