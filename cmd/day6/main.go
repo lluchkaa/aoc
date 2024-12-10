@@ -6,7 +6,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/lluchkaa/aoc/internal/file"
+	"github.com/lluchkaa/aoc/internal/reader"
 )
 
 const filename = "input/day6.txt"
@@ -47,7 +47,7 @@ func readData(r io.Reader) (position, []string) {
 
 	lines := make([]string, 0)
 
-	for i, line := range file.Lines2(r) {
+	for i, line := range reader.Lines2(r) {
 		if index := strings.IndexByte(line, '^'); index >= 0 {
 			start = position{index, i}
 		}

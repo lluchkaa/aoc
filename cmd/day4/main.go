@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/lluchkaa/aoc/internal/file"
+	"github.com/lluchkaa/aoc/internal/reader"
 )
 
 const filename = "input/day4.txt"
@@ -16,7 +16,7 @@ func main() {
 		panic(err)
 	}
 
-	lines := file.ReadLines(inputFile)
+	lines := reader.ReadLines(inputFile)
 	count := getCountOfOccurrences(lines, "XMAS")
 	xCount := getCountOfXMases(lines)
 

@@ -8,7 +8,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/lluchkaa/aoc/internal/file"
+	"github.com/lluchkaa/aoc/internal/reader"
 )
 
 const filename = "input/day7.txt"
@@ -66,7 +66,7 @@ func (e equation) canBeSolved(concatEnabled bool) bool {
 func readData(r io.Reader) []equation {
 	equations := make([]equation, 0)
 
-	for line := range file.Lines(r) {
+	for line := range reader.Lines(r) {
 		e := equation{data: []int{}}
 		colonIndex := strings.IndexByte(line, ':')
 

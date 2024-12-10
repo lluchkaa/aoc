@@ -8,7 +8,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/lluchkaa/aoc/internal/file"
+	"github.com/lluchkaa/aoc/internal/reader"
 	"github.com/lluchkaa/aoc/internal/slice"
 )
 
@@ -40,7 +40,7 @@ func readLists(r io.Reader) ([]int, []int) {
 	first := make([]int, 0)
 	second := make([]int, 0)
 
-	for line := range file.Lines(r) {
+	for line := range reader.Lines(r) {
 		x, y := parseLine(line)
 
 		first = append(first, x)

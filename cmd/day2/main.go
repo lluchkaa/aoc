@@ -7,7 +7,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/lluchkaa/aoc/internal/file"
+	"github.com/lluchkaa/aoc/internal/reader"
 )
 
 const filename = "input/day2.txt"
@@ -115,7 +115,7 @@ func isSafeWithDampener(r report) bool {
 
 func getCountOfSafeReports(r io.Reader) int {
 	count := 0
-	for line := range file.Lines(r) {
+	for line := range reader.Lines(r) {
 		if isSafe(parseLine(line)) {
 			count += 1
 		}
@@ -126,7 +126,7 @@ func getCountOfSafeReports(r io.Reader) int {
 
 func getCountOfSafeReportsWithDampener(r io.Reader) int {
 	count := 0
-	for line := range file.Lines(r) {
+	for line := range reader.Lines(r) {
 		if isSafeWithDampener(parseLine(line)) {
 			count += 1
 		}
