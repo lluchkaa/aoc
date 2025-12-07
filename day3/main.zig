@@ -1,12 +1,26 @@
 const std = @import("std");
 
-fn getMaxJoltage(list: []const u8) i32 {
-    const firstIndex = std.mem.indexOfMax(u8, list[0..(list.len - 1)]);
-    const secondIndex = std.mem.indexOfMax(u8, list[(firstIndex + 1)..]);
+const size: usize = 12;
 
-    const firstDigit = list[firstIndex] - '0';
-    const secondDigit = list[secondIndex + firstIndex + 1] - '0';
-    return firstDigit * 10 + secondDigit;
+fn getMaxJoltage(list: []const u8) i64 {
+    var indexes: [size]usize = undefined;
+
+    for (0..size) |i| {
+        const start = if (i == 0) 0 else indexes[i - 1] + 1;
+        const end = list.len - (size - i) + 1;
+
+        const index = std.mem.indexOfMax(u8, list[start..end]);
+
+        indexes[i] = index + start;
+    }
+
+    var sum: i64 = 0;
+
+    for (indexes, 0..) |index, i| {
+        sum += (list[index] - '0') * std.math.pow(i64, 10, @intCast(size - i - 1));
+    }
+
+    return sum;
 }
 
 fn task() !void {
@@ -21,7 +35,7 @@ fn task() !void {
     const buffer = try file.readToEndAlloc(allocator, stat.size);
 
     var tokenizer = std.mem.tokenizeScalar(u8, buffer, '\n');
-    var sum: i32 = 0;
+    var sum: i64 = 0;
 
     while (tokenizer.next()) |token| {
         sum += getMaxJoltage(token);
